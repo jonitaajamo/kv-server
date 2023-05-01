@@ -1,4 +1,7 @@
-import os
+"""
+This module implements a simple key-value store.
+It loads values from a data file and stores them in memory.
+"""
 from typing import Union
 
 
@@ -7,6 +10,7 @@ class KeyValueStore:
     Loads values from file and stores them in memory into a dict.
     Writing is not supported
     """
+
     def __init__(self, data_file_path: str):
         self.data_file_path = data_file_path
         self.key_value_pairs = {}
@@ -25,12 +29,12 @@ class KeyValueStore:
         <key> is expected to be string without whitespace.
         <value> is expected to be string that can include whitespace.
         """
-        with open(self.data_file_path) as file:
+        with open(self.data_file_path, encoding="utf-8") as file:
             for line in file:
                 key, value = line.strip().split(" ", 1)
                 self.set(key, value)
 
-    def verify_key(self, key:str) -> bool:
+    def verify_key(self, key: str) -> bool:
         """
         Verify if key is present in KeyValueStore
         """
@@ -48,7 +52,6 @@ class KeyValueStore:
         Set the value for the given key. If dublicate exists, latest is persisted.
         """
         self.key_value_pairs[key] = value
-
 
     def flush(self):
         """
