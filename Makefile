@@ -32,3 +32,10 @@ docker-run:
 .PHONY: load_test
 load_test:
 	locust --host=http://localhost --users=1000 --headless --run-time=1m -f load_tests/locustfile.py
+
+
+.PHONY: lint
+lint:
+	black kv_server/; \
+	pylint kv_server/; \
+	isort kv_server

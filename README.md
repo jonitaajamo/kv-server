@@ -37,6 +37,15 @@ make docker-build
 make docker-run
 ```
 
+### Formatting
+
+To lint & format the codebase, run:
+
+```bash
+source venv/bin/activate
+make lint
+```
+
 ### Testing
 
 #### Unit tests
